@@ -8,3 +8,24 @@ It captures the GPS trajectories and the time series data of fuel, energy, speed
 - Data collected through OBD-II loggers
 
 - Driving scenarious are all: highways and traffic-dense downtown
+
+De-identification of data
+
+The signals in the dataset are not unique identifiers, however the start and/or end of GPS coordinates with known vehicle make and model may reveal private information
+about the owner.
+
+They couldn't use anonymity methods that sacrifice spatio-temporal resolution because the roads and routes should be uniquely determine by the GPS traces in this dataset
+
+O metodo deles focasse na supressão e generalização de trajetorias de GPS de condutores
+
+1- Primeiro fazem uma random masking das coordenadas GPS do inicio e fim da viagem (random fogging)
+
+Neste random fogging, criam dois "fogs" um no inicio e outro no fim. Estes objetos têm uma equação com base na latitude e longitude do ponto inicial de maneira a que fiquem
+a uma distância l_start e l_end dos pontos originais.
+
+2- Fazem geographic fencing das trips (criam uma boundry das trips em vez de dizer o local exato)
+
+3- Bounding trips between major intersections
+
+Para alem disto suprimem ou generalizam outras informações estáticas (maker, model, year, trim level, weight, etc.)
+
